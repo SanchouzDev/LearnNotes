@@ -1,6 +1,7 @@
 using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.MusicTheory;
 using Melanchall.DryWetMidi.Multimedia;
+using System.Runtime.InteropServices;
 using System;
 
 namespace LearnNotes
@@ -12,6 +13,12 @@ namespace LearnNotes
 
         InputDevice _inputDevice;
 
+        private const int WM_DEVICECHANGE = 0x0219;
+        //private const int DBT_DEVICEARRIVAL = 0x8000;
+        //private const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
+
+        uint lastMidiCount;
+
         public MainForm()
         {
             InitializeComponent();
@@ -19,6 +26,8 @@ namespace LearnNotes
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            lastMidiCount = MIDI_Init.MidiCount();
+
             checkBox.Checked = true;
             checkBox_allNotes.Checked = true;
             images = new HashSet<string>();
@@ -45,6 +54,39 @@ namespace LearnNotes
                 {
                     Application.Exit();
                 }
+            }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == WM_DEVICECHANGE)
+            {
+                uint currentMidiCount = MIDI_Init.MidiCount();
+                if (currentMidiCount > lastMidiCount)
+                {
+                    tipText.Text = "Midi connected";
+                }
+                else
+                {
+                    tipText.Text = "Midi disconected";
+                }
+                lastMidiCount = currentMidiCount;
+
+                //if (m.WParam.ToInt32() == DBT_DEVICEARRIVAL || m.WParam.ToInt32() == DBT_DEVICEREMOVECOMPLETE)
+                //{
+                //    tipText.Text = "Midi connected";
+                //    uint currentMidiCount = MIDI_Init.MidiCount();
+                //    if (currentMidiCount > lastMidiCount)
+                //    {
+                //        tipText.Text = "Midi connected";
+                //    }
+                //    else
+                //    {
+                //        tipText.Text = "Midi disconected";
+                //    }
+                //    lastMidiCount = currentMidiCount;
+                //}
             }
         }
 
