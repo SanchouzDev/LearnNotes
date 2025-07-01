@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnNotes", "LearnNotes.csproj", "{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F425EADA-DE8D-4998-972C-E119FBA35595}
+	EndGlobalSection
+EndGlobal
