@@ -10,7 +10,7 @@ namespace LearnNotes
     {
         List<InputDevice> inputDevices = new List<InputDevice>();
         HashSet<string> images, images_1, images_2, images_3, images_4, images_5, images_6;
-        string imageNoteName;
+        string imageNoteName = "";
 
         InputDevice _inputDevice;
 
@@ -21,6 +21,13 @@ namespace LearnNotes
         public MainForm()
         {
             InitializeComponent();
+            images = new HashSet<string>();
+            images_1 = new HashSet<string>();
+            images_2 = new HashSet<string>();
+            images_3 = new HashSet<string>();
+            images_4 = new HashSet<string>();
+            images_5 = new HashSet<string>();
+            images_6 = new HashSet<string>();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -28,7 +35,7 @@ namespace LearnNotes
             lastMidiCount = InputDevice.GetAll().Count;
             images = new HashSet<string>();
 
-            GetMidiDevices();
+            GetInputDevices();
             GetAllImages();
             FillImages();
             LoadRandomImage();
@@ -42,17 +49,17 @@ namespace LearnNotes
                 int currentMidiCount = InputDevice.GetAll().Count;
                 if (currentMidiCount > lastMidiCount)
                 {
-                    GetMidiDevices(); // MIDI connect
+                    GetInputDevices(); // MIDI connect
                 }
                 else
                 {
-                    GetMidiDevices(); // MIDI disconnect
+                    GetInputDevices(); // MIDI disconnect
                 }
                 lastMidiCount = currentMidiCount;
             }
         }
 
-        void GetMidiDevices()
+        void GetInputDevices()
         {
             if (inputDevices.Count > 0)
             {
@@ -96,37 +103,31 @@ namespace LearnNotes
 
         void GetAllImages()
         {
-            images_1 = new HashSet<string>();
             foreach (string image in Directory.GetFiles("./Images/1"))
             {
                 images_1.Add(image);
             }
 
-            images_2 = new HashSet<string>();
             foreach (string image in Directory.GetFiles("./Images/2"))
             {
                 images_2.Add(image);
             }
 
-            images_3 = new HashSet<string>();
             foreach (string image in Directory.GetFiles("./Images/3"))
             {
                 images_3.Add(image);
             }
 
-            images_4 = new HashSet<string>();
             foreach (string image in Directory.GetFiles("./Images/4"))
             {
                 images_4.Add(image);
             }
 
-            images_5 = new HashSet<string>();
             foreach (string image in Directory.GetFiles("./Images/5"))
             {
                 images_5.Add(image);
             }
 
-            images_6 = new HashSet<string>();
             foreach (string image in Directory.GetFiles("./Images/6"))
             {
                 images_6.Add(image);
@@ -280,6 +281,5 @@ namespace LearnNotes
             }
         }
         #endregion
-
     }
 }
