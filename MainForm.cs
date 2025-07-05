@@ -8,16 +8,15 @@ namespace LearnNotes
 {
     public partial class MainForm : Form
     {
+        List<InputDevice> inputDevices = new List<InputDevice>();
         HashSet<string> images, images_1, images_2, images_3, images_4, images_5, images_6;
         string imageNoteName;
 
         InputDevice _inputDevice;
 
         private const int WM_DEVICECHANGE = 0x0219;
-        //private const int DBT_DEVICEARRIVAL = 0x8000;
-        //private const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
 
-        uint lastMidiCount;
+        int lastMidiCount;
 
         public MainForm()
         {
@@ -26,35 +25,13 @@ namespace LearnNotes
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lastMidiCount = MIDI_Init.MidiCount();
-
-            checkBox.Checked = true;
-            checkBox_allNotes.Checked = true;
+            lastMidiCount = InputDevice.GetAll().Count;
             images = new HashSet<string>();
 
-
+            GetMidiDevices();
             GetAllImages();
             FillImages();
             LoadRandomImage();
-
-            if (InputDevice.GetAll().Count > 0)
-            {
-                _inputDevice = InputDevice.GetByIndex(0);
-                _inputDevice.EventReceived += OnMidiEventReceived;
-                _inputDevice.StartEventsListening();
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Connect any MIDI-device first! Run the application anyway?", "Error", MessageBoxButtons.OKCancel);
-                if (result == DialogResult.OK)
-                {
-                    return;
-                }
-                else
-                {
-                    Application.Exit();
-                }
-            }
         }
 
         protected override void WndProc(ref Message m)
@@ -62,32 +39,59 @@ namespace LearnNotes
             base.WndProc(ref m);
             if (m.Msg == WM_DEVICECHANGE)
             {
-                uint currentMidiCount = MIDI_Init.MidiCount();
+                int currentMidiCount = InputDevice.GetAll().Count;
                 if (currentMidiCount > lastMidiCount)
                 {
-                    tipText.Text = "Midi connected";
+                    GetMidiDevices(); // MIDI connect
                 }
                 else
                 {
-                    tipText.Text = "Midi disconected";
+                    GetMidiDevices(); // MIDI disconnect
                 }
                 lastMidiCount = currentMidiCount;
-
-                //if (m.WParam.ToInt32() == DBT_DEVICEARRIVAL || m.WParam.ToInt32() == DBT_DEVICEREMOVECOMPLETE)
-                //{
-                //    tipText.Text = "Midi connected";
-                //    uint currentMidiCount = MIDI_Init.MidiCount();
-                //    if (currentMidiCount > lastMidiCount)
-                //    {
-                //        tipText.Text = "Midi connected";
-                //    }
-                //    else
-                //    {
-                //        tipText.Text = "Midi disconected";
-                //    }
-                //    lastMidiCount = currentMidiCount;
-                //}
             }
+        }
+
+        void GetMidiDevices()
+        {
+            if (inputDevices.Count > 0)
+            {
+                inputDevices.Clear();
+            }
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.Items.Clear();
+                comboBox1.Text = "";
+            }
+
+            if (InputDevice.GetAll().Count > 0)
+            {
+                foreach (var device in InputDevice.GetAll())
+                {
+                    inputDevices.Add(device);
+                    comboBox1.Items.Add(device.Name);
+                }
+            }
+
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
+        }
+
+        void SetInputDevice()
+        {
+            if (InputDevice.GetAll().Count > 0)
+            {
+                _inputDevice = InputDevice.GetByIndex(comboBox1.SelectedIndex);
+                _inputDevice.EventReceived += OnMidiEventReceived;
+                _inputDevice.StartEventsListening();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetInputDevice();
         }
 
         void GetAllImages()
@@ -129,6 +133,27 @@ namespace LearnNotes
             }
         }
 
+        private void LoadRandomImage()
+        {
+            if (images.Count > 0 && images != null)
+            {
+                Random rnd = new();
+                int a = rnd.Next(0, images.Count);
+                pictureBox.Image = Image.FromFile(images.ElementAt(a));
+
+
+                imageNoteName = $"{Path.GetFileNameWithoutExtension(images.ElementAt(a))}";
+                if (checkBox.Checked)
+                {
+                    imageNoteNameText.Text = $"Image note:\n\n{imageNoteName}";
+                }
+                else
+                {
+                    imageNoteNameText.Text = $"Image note:\n\n----------";
+                }
+            }
+        }
+
         private void NewImageButton_Click(object sender, EventArgs e)
         {
             LoadRandomImage();
@@ -166,27 +191,8 @@ namespace LearnNotes
             }
         }
 
-        private void LoadRandomImage()
-        {
-            if (images.Count > 0 && images != null)
-            {
-                Random rnd = new();
-                int a = rnd.Next(0, images.Count);
-                pictureBox.Image = Image.FromFile(images.ElementAt(a));
-
-
-                imageNoteName = $"{Path.GetFileNameWithoutExtension(images.ElementAt(a))}";
-                if (checkBox.Checked)
-                {
-                    imageNoteNameText.Text = $"Image note:\n\n{imageNoteName}";
-                }
-                else
-                {
-                    imageNoteNameText.Text = $"Image note:\n\n----------";
-                }
-            }
-        }
-
+        //CheckBoxes region
+        #region 
         private void checkBox_allNotes_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_allNotes.Checked)
@@ -207,9 +213,36 @@ namespace LearnNotes
                 checkBox_C5.Checked = false;
                 checkBox_C6.Checked = false;
             }
+
+            FillImages();
         }
 
-        private void Apply_Button_Click(object sender, EventArgs e)
+        private void checkBox_C1_CheckStateChanged(object sender, EventArgs e)
+        {
+            FillImages();
+        }
+
+        private void checkBox_C2_CheckStateChanged(object sender, EventArgs e)
+        {
+            FillImages();
+        }
+
+        private void checkBox_C3_CheckStateChanged(object sender, EventArgs e)
+        {
+            FillImages();
+        }
+
+        private void checkBox_C4_CheckStateChanged(object sender, EventArgs e)
+        {
+            FillImages();
+        }
+
+        private void checkBox_C5_CheckStateChanged(object sender, EventArgs e)
+        {
+            FillImages();
+        }
+
+        private void checkBox_C6_CheckStateChanged(object sender, EventArgs e)
         {
             FillImages();
         }
@@ -246,5 +279,7 @@ namespace LearnNotes
                 images.UnionWith(images_6);
             }
         }
+        #endregion
+
     }
 }
