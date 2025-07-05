@@ -7,7 +7,11 @@
       "RelativeMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|c:\\users\\zheni\\desktop\\learnnotes\\learnnotes\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|c:\\users\\zheni\\desktop\\learnnotes\\learnnotes\\learnnotes.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|solutionrelative:learnnotes.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|c:\\users\\zheni\\desktop\\learnnotes\\learnnotes\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|c:\\users\\zheni\\desktop\\learnnotes\\learnnotes\\learnnotes.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{53EC25BA-9670-49C4-9EAB-1AEF0B218A37}|LearnNotes.csproj|solutionrelative:learnnotes.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "LearnNotes",
               "DocumentMoniker": "C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\LearnNotes.csproj",
               "RelativeDocumentMoniker": "LearnNotes.csproj",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -58,12 +58,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T19:33:09.442Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T19:33:09.442Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainForm.Designer.cs",
               "DocumentMoniker": "C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\MainForm.Designer.cs",
               "RelativeDocumentMoniker": "MainForm.Designer.cs",
@@ -71,20 +70,19 @@
               "RelativeToolTip": "MainForm.Designer.cs",
               "ViewState": "AgIAAAEBAAAAAAAAAAAIwOYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T14:48:46.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T14:48:46.085Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentIndex": 2,
+              "Title": "MainForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
-              "ToolTip": "C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\MainForm.cs [Design]",
+              "RelativeToolTip": "MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-05T17:22:33.247Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -94,7 +92,7 @@
               "RelativeDocumentMoniker": "MainForm.cs",
               "ToolTip": "C:\\Users\\zheni\\Desktop\\LearnNotes\\LearnNotes\\MainForm.cs",
               "RelativeToolTip": "MainForm.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAQwFcAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwD0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-29T14:49:08.944Z",
               "EditorCaption": ""
